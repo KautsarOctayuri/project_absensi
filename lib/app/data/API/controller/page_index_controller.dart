@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../../routes/app_pages.dart';
+import '../../../routes/app_pages.dart';
 
 class PageIndexController extends GetxController {
   RxInt pageIndex = 0.obs;

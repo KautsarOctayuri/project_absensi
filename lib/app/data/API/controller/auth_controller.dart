@@ -5,7 +5,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:project_absensi/app/data/api_client.dart';
 
-import '../../routes/app_pages.dart';
+import '../../../routes/app_pages.dart';
 
 class AuthController extends GetxController {
   final storage = const FlutterSecureStorage();

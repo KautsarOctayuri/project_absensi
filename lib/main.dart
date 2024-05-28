@@ -4,9 +4,9 @@ import 'package:get/get.dart';
 
 import 'app/routes/app_pages.dart';
 
-import 'package:project_absensi/app/data/controller/auth_controller.dart';
+import 'package:project_absensi/app/data/api/controller/auth_controller.dart';
 
-import 'package:project_absensi/app/data/controller/page_index_controller.dart';
+import 'package:project_absensi/app/data/api/controller/page_index_controller.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

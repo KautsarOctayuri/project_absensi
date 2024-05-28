@@ -190,7 +190,7 @@ class LoginView extends GetView<LoginController> {
                       margin: const EdgeInsets.only(top: 4),
                       alignment: Alignment.centerLeft,
                       child: TextButton(
-                        onPressed: () => Get.toNamed(Routes.FORGOT_PASSWORD),
+                        onPressed: () => Get.toNamed(Routes.CHANGE_PASSWORD),
                         style: TextButton.styleFrom(
                           foregroundColor: AppColor.secondarySoft,
                         ),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../style/app_color.dart';
-import '../data/controller/page_index_controller.dart';
+import '../data/API/controller/page_index_controller.dart';
 
 class CustomBottomNavigationBar extends GetView<PageIndexController> {
   const CustomBottomNavigationBar({super.key});

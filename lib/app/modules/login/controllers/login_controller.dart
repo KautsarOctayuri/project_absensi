@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import 'package:project_absensi/app/data/controller/auth_controller.dart';
+import 'package:project_absensi/app/data/API/controller/auth_controller.dart';
 
 
 
