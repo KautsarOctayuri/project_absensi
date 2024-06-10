@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:project_absensi/app/data/API/controller/presence_controller.dart';
 
 import 'app/routes/app_pages.dart';
 
@@ -20,6 +21,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.put(PageIndexController(), permanent: true);
     final authC = Get.put(AuthController(), permanent: true);
+    Get.put(PresenceController(),permanent: true);
+    Get.put(PageIndexController(),permanent: true);
     return FutureBuilder(
       future: authC.firstinitialized(),
       builder: (context, snapshot) {
