@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'dart:async';
@@ -38,7 +40,8 @@ presence() async {
     print(distance);
     //presence (store to database)
     if (distance < 300) {
-      CustomAlertDialog.showPresenceAlert(
+      if (authC.absenHariIniModel.data == null) {
+        CustomAlertDialog.showPresenceAlert(
         title: "Are you want to check in?",
         message: "You need to confirm bellow you can do presence now",
         onCancel: () => Get.back(),
@@ -46,11 +49,24 @@ presence() async {
           await processPresence(position, address, distance);
         },
       );
+
+      } else {
+        CustomAlertDialog.showPresenceAlert(
+        title: "Are you want to check out?",
+        message: "You need to confirm bellow you can do presence now",
+        onCancel: () => Get.back(),
+        onConfirm: () async {
+          await processPresencePulang(authC.absenHariIniModel.data!.id.toString());
+        },
+      );
+      }
+      
     } else {
       CustomToast.errorToast(
           'Tidak Bisa Absen', 'Lokasi kamu lebihdari 200 meter dari kantor');
     }
     isLoading.value = false; 
+    Get.offAllNamed(Routes.HOME);
   } else {
     isLoading.value = false;
     Get.snackbar("Terjadi kesalahan",determinePosition["message"]);
@@ -123,4 +139,30 @@ Future<void> processPresence(
       "error": false,
     };
   }
+
+  Future<void> processPresencePulang(String id) async {
+  try {
+    isLoading.value = true;
+    var res = await PresenceApi().absenPulang(
+     accesstoken: authC.currentToken!,
+     id: id,
+     waktuAbsenPulang: DateTime.now().toString(),
+    );
+    isLoading.value = false;
+    if (res.data['success'] == true){
+        Get.back();
+        CustomToast.successToast("Success", res.data['message'].toString());
+      }else {
+        Get.rawSnackbar(
+          messageText: Text(res.data['message'].toString()),
+          backgroundColor: Colors.red.shade300,
+        );
+      }
+    } catch (error) {
+      isLoading.value = false;
+      Get.rawSnackbar(message: error.toString());
+  }
 }
+  
+}
+

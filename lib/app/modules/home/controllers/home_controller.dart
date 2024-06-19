@@ -192,7 +192,7 @@ class HomeController extends GetxController {
         messageText: Text(e.toString()),
         backgroundColor: Colors.red.shade300,
       );
-      return absenHariIniModel;
+      return authC.absenHariIniModel;
     }
   }
 

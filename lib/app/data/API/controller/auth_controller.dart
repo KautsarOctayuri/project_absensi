@@ -17,6 +17,8 @@ class AuthController extends GetxController {
   TextEditingController emailC = TextEditingController();
   TextEditingController passwordC = TextEditingController();
 
+  AbsenHariIniModel absenHariIniModel = AbsenHariIniModel();
+
   @override
   void onInit() async {
     super.onInit();
